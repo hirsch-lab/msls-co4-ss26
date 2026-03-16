@@ -8,7 +8,7 @@ def print_system_info():
     get_platform_info(info)
     get_python_info(info)
     get_package_info_all(info)
-    #get_ffmpeg_info(info)
+    get_ffmpeg_info(info)
     print_info_dict(info)
 
 
@@ -86,15 +86,10 @@ def get_package_info_all(info):
     get_package_info(info, "OpenCV", "cv2")
     get_package_info(info, "Pillow", "PIL")
     get_package_info(info, "skimage")
-    
-    get_package_info(info, "nibabel")
-    get_package_info(info, "pydicom")
-    get_package_info(info, "SimpleITK")
 
+    get_package_info(info, "soundfile")
+    get_package_info(info, "sounddevice")
     get_package_info(info, "jupyter")
-
-    get_package_info(info, "torch")
-    get_package_info(info, "torchvision")
 
 
 def get_ffmpeg_info(info):
@@ -141,10 +136,16 @@ def print_info_dict(info):
 
     print("Packages:")
     print("=========")
+    max_len = max(len(k) for k in info["packages"])
     for k, v in info["packages"].items():
-        print("{0:>14} : {1}".format(k, v))
+        v = v.lstrip("v")  # Remove prefix "v" if it occurs: "v0.1.2"
+        print("{0:>{1}} : {2}".format(k, max_len, v))
+
     print()
-    
+    print("FFmpeg:")
+    print("=======")
+    print("{0:>14} : {1}".format("ffmpeg", info["ffmpeg"]))
+    print("{0:>14} : {1}".format("ffmpeg-python", info["ffmpeg_python"]))
 
 
 

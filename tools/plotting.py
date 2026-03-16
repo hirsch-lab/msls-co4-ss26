@@ -32,6 +32,10 @@ PALETTE_CMAP = color_palette("default",
 PALETTE_PLOTLY = colors2plotly(PALETTE)
 # PALETTE_RGB = [PALETTE[1], PALETTE[2], PALETTE[0]]
 
+def show_separator():
+    """Displays a separator line."""
+    display(HTML("<hr>"))
+    
 
 def show_header(title=None, 
                 subtitle=None, 
@@ -40,6 +44,7 @@ def show_header(title=None,
                 # Default title style
                 fontsize=24, 
                 color=None,
+                align="left",
                 kwargs={},
                 
                 # Default subtitle style
@@ -61,7 +66,7 @@ def show_header(title=None,
     title_style = dict()
     title_style.update(kwargs)
     title_style.setdefault("width", width_str)
-    title_style.setdefault("text-align", "center")
+    title_style.setdefault("text-align", align)
     title_style.setdefault("font-size", "%dpx" % fontsize)
     title_style.setdefault("font-weight", "bold")
     title_style.setdefault("color", color or "#333333")
@@ -169,6 +174,7 @@ def show_image(image, title=None,
                axes_frame=True,
                show_axes=False,
                box_aspect=None,
+               figsize=None,
                save_kwargs={},
                ):
     """Displays an image using matplotlib capabilities.
@@ -198,9 +204,10 @@ def show_image(image, title=None,
     if ax is None:
         # Create a figure of the right size with 
         # one axis that takes up the full figure
-        figsize = width / float(dpi), height / float(dpi)
-        if figsize[0]>9 and True:
-            figsize = (9, figsize[1] * 9 / figsize[0])
+        if figsize is None:
+            figsize = width / float(dpi), height / float(dpi)
+            if figsize[0]>9 and True:
+                figsize = (9, figsize[1] * 9 / figsize[0])
         fig = plt.figure(figsize=figsize)
         ax = fig.add_axes([0, 0, 1, 1])
 

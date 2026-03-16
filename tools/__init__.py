@@ -1,7 +1,9 @@
 __version__ = "0.2"
 __author__ = "Norman Juchler"
 
-from .plotting import (display_image,
+from .plotting import (show_header,
+                       show_separator,
+                       display_image,
                        draw_image, # Obsolete, use show_image 
                        show_image,
                        show_image_pair, 

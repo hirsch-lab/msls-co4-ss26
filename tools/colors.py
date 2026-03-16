@@ -215,7 +215,8 @@ def color_transition(color_a, color_b, mode="mix", gamma=None,
                for t in ts]
     return palette
 
-def color_transitions(*colors, n_stseps=100, **kwargs):
+
+def color_transitions(*colors, **kwargs):
     """
     Creates a color palette by interpolating between a list of colors.
 
@@ -229,9 +230,20 @@ def color_transitions(*colors, n_stseps=100, **kwargs):
     Returns:
         palette:    A list of colors.
     """
-    palette = []    
-    for i in range(len(colors)-1):
-        palette += color_transition(colors[i], colors[i+1], **kwargs)
+    n_transitions = len(colors)-1
+    n_steps = kwargs.pop("n_steps", 100)
+    
+    # Split n_steps into n_transitions parts of (almost) equal size
+    q, r = divmod(n_steps+1, n_transitions)
+    n_steps_arr = np.full(n_transitions, q, dtype=int)
+    n_steps_arr[:r] += 1
+
+    palette = []
+    for i in range(n_transitions):
+        part = color_transition(colors[i], colors[i+1], 
+                                n_steps=n_steps_arr[i], 
+                                **kwargs)
+        palette += part[:-1] if (i<n_transitions-1) else part
     return palette
 
 
