@@ -1,0 +1,28 @@
+{
+  "os": "Windows-10-10.0.22621-SP0",
+  "python": "CPython 3.11.14",
+  "startedAt": "2026-04-07T13:26:45.635241Z",
+  "program": "c:\\Studium\\Master\\2. Semester\\Deep Learning\\Code\\Code-20260407\\wandb_test.py",
+  "codePath": "..\\..\\Deep Learning\\Code\\Code-20260407\\wandb_test.py",
+  "codePathLocal": "..\\..\\Deep Learning\\Code\\Code-20260407\\wandb_test.py",
+  "git": {
+    "remote": "https://github.com/julbue/msls-co4-ss26.git",
+    "commit": "8f0630064da30e6c14150b0526ad4cb2eb9c1fdb"
+  },
+  "email": "buetzjul@students.zhaw.ch",
+  "root": "C:\\Studium\\Master\\2. Semester\\CO4\\rep",
+  "host": "DESKTOP-JAI8NTM",
+  "executable": "C:\\Users\\Julian\\miniconda3\\envs\\torchfix\\python.exe",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "468738969600",
+      "used": "286222929920"
+    }
+  },
+  "memory": {
+    "total": "16860798976"
+  },
+  "writerId": "0d9r8t5g01vthycaau0bvu1jgtzb5uxa"
+}
